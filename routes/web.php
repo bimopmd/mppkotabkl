@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\FrontEndController;
 use App\Http\Controllers\InstansiController;
+use App\Http\Controllers\PegawaiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +20,9 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 Route::get('/', [App\Http\Controllers\FrontEndController::class, 'indexFrontEnd']);
-Route::get('/frontend/instansi{instansi}', [App\Http\Controllers\FrontEndController::class, 'instansiFrontEnd']);
+Route::get('frontend/instansi/{id}', [App\Http\Controllers\FrontEndController::class, 'showInstansi']);
+
+// Route::resource('/frontend', FrontEndController::class);
 
 Auth::routes();
 Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'showFormLogin'])->name('login');
@@ -27,6 +31,7 @@ Route::post('login/auth', [App\Http\Controllers\Auth\LoginController::class, 'lo
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'showDashboard']);
     Route::resource('/dashboard/instansi', InstansiController::class);
+    Route::resource('/dashboard/pegawai', PegawaiController::class);
 });
 
 

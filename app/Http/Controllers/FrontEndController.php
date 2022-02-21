@@ -8,15 +8,15 @@ use Illuminate\Http\Request;
 class FrontEndController extends Controller
 {
 
-    public function indexFrontEnd(Instansi $instansi, Request $request)
+    public function indexFrontEnd(Instansi $instansi)
     {
         $instansi = Instansi::get();
         return view('layoutsFE.masterFEView', ['instansi' => $instansi]);
     }
 
-    public function instansiFrontEnd(Instansi $instansi, Request $request)
+    public function showInstansi($id)
     {
-        Instansi::all();
-        return view('layoutsFE.detailFEView', ['instansi' => $instansi]);
+        $instansi = Instansi::first();
+        return view('layoutsFE.detailFEView', compact('instansi', $instansi));
     }
 }

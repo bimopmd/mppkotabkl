@@ -313,7 +313,7 @@
                                 <div class="loop owl-carousel">
                                     @foreach ($instansi as $data)
                                     <div class="item">
-                                        <a href="/frontend/instansi{{$data->id}}">
+                                        <a href="frontend/instansi/{{$data->id}}">
                                             <div class="portfolio-item">
                                                 @if ($data->logo_instansi)
                                                 <td class="text-center">
