@@ -8,6 +8,9 @@
           <div class="block">
             <!-- Navigation -->
             <div class="block-content block-content-full border-b clearfix">
+                <!-- Breadcrumb -->
+                {{ Breadcrumbs::render('detailPegawai') }}
+                <!-- end Breadcrumb -->
               <div class="btn-group float-right">
                 <a class="btn btn-warning" onclick="Codebase.loader('show', 'bg-gd-dusk');
                 setTimeout(function () {

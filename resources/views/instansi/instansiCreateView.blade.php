@@ -8,10 +8,9 @@
 <div class="content">
     <div class="block">
     <div class="block-header block-header-default">
-        <h3 class="block-title"><a href="{{route('instansi.index')}}" onclick="Codebase.loader('show', 'bg-gd-cherry');
-                setTimeout(function () {
-                Codebase.loader('hide');
-                }, 3000);">Menu Instansi</a> / Add Data Instansi </h3>
+        <!-- Breadcrumb -->
+        {{ Breadcrumbs::render('addInstansi') }}
+        <!-- end Breadcrumb -->
         <div class="block-options">
         <button type="button" class="btn-block-option">
             <i class="si si-wrench"></i>

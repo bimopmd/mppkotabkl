@@ -1,6 +1,6 @@
 
 @extends('layouts.masterView')
-@section('title','Add Data Pegawai')
+@section('title','Edit Data Pegawai')
 @section('content')
 
 <main id="main-container">
@@ -8,10 +8,14 @@
 <div class="content">
     <div class="block">
     <div class="block-header block-header-default">
-        <h3 class="block-title"><a href="{{route('pegawai.index')}}" onclick="Codebase.loader('show', 'bg-gd-cherry');
+        <!-- Breadcrumb -->
+        {{ Breadcrumbs::render('editPegawai') }}
+        <!-- end Breadcrumb -->
+        {{-- <h3 class="block-title"><a href="{{route('pegawai.index')}}" onclick="Codebase.loader('show', 'bg-gd-cherry');
                 setTimeout(function () {
                 Codebase.loader('hide');
-                }, 3000);">Menu Pegawai</a> / Edit Data Pegawai </h3>
+                }, 3000);">Menu Pegawai</a> / Edit Data Pegawai
+        </h3> --}}
         <div class="block-options">
         <button type="button" class="btn-block-option">
             <i class="si si-wrench"></i>

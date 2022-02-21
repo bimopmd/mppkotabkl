@@ -8,10 +8,9 @@
 <div class="content">
     <div class="block">
     <div class="block-header block-header-default">
-        <h3 class="block-title"><a href="{{route('pegawai.index')}}" onclick="Codebase.loader('show', 'bg-gd-cherry');
-                setTimeout(function () {
-                Codebase.loader('hide');
-                }, 3000);">Menu Pegawai</a> / Add Data Pegawai </h3>
+        <!-- Breadcrumb -->
+        {{ Breadcrumbs::render('addPegawai') }}
+        <!-- end Breadcrumb -->
         <div class="block-options">
         <button type="button" class="btn-block-option">
             <i class="si si-wrench"></i>

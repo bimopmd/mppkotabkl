@@ -29,7 +29,7 @@ Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'showFor
 Route::post('login/auth', [App\Http\Controllers\Auth\LoginController::class, 'login']);
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'showDashboard']);
+    Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'showDashboard'])->name('dashboard');
     Route::resource('/dashboard/instansi', InstansiController::class);
     Route::resource('/dashboard/pegawai', PegawaiController::class);
 });

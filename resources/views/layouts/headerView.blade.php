@@ -104,23 +104,23 @@
                 <i class="fa fa-angle-down ml-5"></i>
               </button>
               <div class="dropdown-menu dropdown-menu-right min-width-200" aria-labelledby="page-header-user-dropdown">
-                <h5 class="h6 text-center py-10 mb-5 border-b text-uppercase">User</h5>
+                <h5 class="h6 text-center py-10 mb-5 border-b text-uppercase">Pengaturan</h5>
                 <a class="dropdown-item" href="be_pages_generic_profile.html">
-                  <i class="si si-user mr-5"></i> Profile
+                  <i class="si si-user mr-5"></i> cooming soon
                 </a>
                 <a class="dropdown-item d-flex align-items-center justify-content-between" href="be_pages_generic_inbox.html">
-                  <span><i class="si si-envelope-open mr-5"></i> Inbox</span>
+                  <span><i class="si si-envelope-open mr-5"></i> cooming soon</span>
                   <span class="badge badge-primary">3</span>
                 </a>
                 <a class="dropdown-item" href="be_pages_generic_invoice.html">
-                  <i class="si si-note mr-5"></i> Invoices
+                  <i class="si si-note mr-5"></i> cooming soon
                 </a>
                 <div class="dropdown-divider"></div>
 
                 <!-- Toggle Side Overlay -->
                 <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
                 <a class="dropdown-item" href="javascript:void(0)" data-toggle="layout" data-action="side_overlay_toggle">
-                  <i class="si si-wrench mr-5"></i> Settings
+                  <i class="si si-wrench mr-5"></i> cooming soon
                 </a>
                 <!-- END Side Overlay -->
 
@@ -135,7 +135,7 @@
             </div>
             <!-- END User Dropdown -->
 
-            <!-- Notifications -->
+            {{-- <!-- Notifications -->
             <div class="btn-group" role="group">
               <button type="button" class="btn btn-rounded btn-dual-secondary" id="page-header-notifications" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fa fa-flag"></i>
@@ -206,12 +206,12 @@
                 </a>
               </div>
             </div>
-            <!-- END Notifications -->
+            <!-- END Notifications --> --}}
 
-            <!-- Toggle Side Overlay -->
+            {{-- <!-- Toggle Side Overlay -->
             <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
             <button type="button" class="btn btn-circle btn-dual-secondary" data-toggle="layout" data-action="side_overlay_toggle">
               <i class="fa fa-tasks"></i>
             </button>
-            <!-- END Toggle Side Overlay -->
+            <!-- END Toggle Side Overlay --> --}}
           </div>

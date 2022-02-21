@@ -28,6 +28,9 @@
                     <!-- Dynamic Table Full -->
                     <div class="block">
                         <div class="block-header block-header-default">
+                            <!-- Breadcrumb -->
+                            {{ Breadcrumbs::render('instansi') }}
+                            <!-- end Breadcrumb -->
                         <h3 class="block-title"><small></small></h3>
                             <a href="{{route('instansi.create')}}" class="btn btn-primary" onclick="Codebase.loader('show', 'bg-gd-dusk');
                                     setTimeout(function () {

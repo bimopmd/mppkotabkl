@@ -22,9 +22,9 @@
                 <!-- END Close Sidebar -->
                 <!-- Logo -->
                 <div class="content-header-item">
-                    <a class="link-effect font-w700" href="index.html">
+                    <a class="link-effect font-w100" href="{{route('dashboard')}}">
                     <i class="si si-fire text-primary"></i>
-                    <span class="font-size-xl text-dual-primary-dark">code</span><span class="font-size-xl text-primary">base</span>
+                    <span class="font-size-xl text-dual-primary-dark">MPP </span><span class="font-size-m text-primary">Kota Bengkulu</span>
                     </a>
                 </div>
                 <!-- END Logo -->
@@ -57,7 +57,7 @@
                         </a>
                     </li>
                     <li class="list-inline-item">
-                        <a class="link-effect text-dual-primary-dark" href="op_auth_signin.html">
+                        <a class="link-effect text-dual-primary-dark" href="{{route('logout')}}" method='POST'>@csrf
                         <i class="si si-logout"></i>
                         </a>
                     </li>
@@ -70,7 +70,7 @@
                 <div class="content-side content-side-full">
                 <ul class="nav-main">
                     <li>
-                    <a href="be_pages_dashboard.html"><i class="si si-cup"></i><span class="sidebar-mini-hide">Dashboard</span></a>
+                    <a href="{{route('dashboard')}}"><i class="si si-cup"></i><span class="sidebar-mini-hide">Dashboard</span></a>
                     </li>
                     <li class="nav-main-heading"><span class="sidebar-mini-visible">UI</span><span class="sidebar-mini-hidden">User Interface</span></li>
                     <li>

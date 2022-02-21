@@ -10,14 +10,7 @@
 
 @section('content')
     <main id="main-container">
-        <!-- Hero -->
-        <!-- END Hero -->
-        <!-- Page Content -->
-        {{-- @if (Instansi::has('success'))
-        <script>
-            Swal("success!", "{{$message}}" , "success");
-        </script>
-        @endif --}}
+
         <div class="content">
             <div class="row invisible" data-toggle="appear">
                 <!-- Main Container -->
@@ -28,6 +21,9 @@
                     <!-- Dynamic Table Full -->
                     <div class="block">
                         <div class="block-header block-header-default">
+                            <!-- Breadcrumb -->
+                            {{ Breadcrumbs::render('pegawai') }}
+                            <!-- end Breadcrumb -->
                         <h3 class="block-title"><small></small></h3>
                             <a href="{{route('pegawai.create')}}" class="btn btn-primary" onclick="Codebase.loader('show', 'bg-gd-dusk');
                                     setTimeout(function () {

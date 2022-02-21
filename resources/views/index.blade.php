@@ -9,7 +9,16 @@
 @endpush
 
 @section('content')
-        {{-- <div class="content">
+        <!-- Breadcrumb -->
+        <div class="bg-body-light border-b">
+          <div class="content py-5 text-center">
+            <nav class="breadcrumb bg-body-light mb-0">
+              <span class="breadcrumb-item active">{{ Breadcrumbs::render('dashboard') }}</span>
+            </nav>
+          </div>
+        </div>
+        <!-- END Breadcrumb -->
+        <div class="content">
           <!-- Statistics -->
           <!-- CountTo ([data-toggle="countTo"] is initialized in Helpers.coreAppearCountTo()) -->
           <!-- For more info and examples you can check out https://github.com/mhuggins/jquery-countTo -->
@@ -37,7 +46,7 @@
                 </a>
               </div>
             </div>
-            Statistics <small class="d-none d-sm-inline">Awesome!</small>
+            {{-- Statistics <small class="d-none d-sm-inline">Awesome!</small> --}}
           </div>
           <div class="row gutters-tiny">
             <!-- Earnings -->
@@ -46,12 +55,12 @@
                 <div class="block-content block-content-full block-sticky-options">
                   <div class="block-options">
                     <div class="block-options-item">
-                      <i class="fa fa-area-chart text-white-op"></i>
+                      <i class="fa fa-users text-white-op"></i>
                     </div>
                   </div>
                   <div class="py-20 text-center">
-                    <div class="font-size-h2 font-w700 mb-0 text-white" data-toggle="countTo" data-to="2420" data-before="$">0</div>
-                    <div class="font-size-sm font-w600 text-uppercase text-white-op">Earnings</div>
+                    <div class="font-size-h2 font-w700 mb-0 text-white" data-toggle="countTo" data-to="{{$jumlah_pegawai}}">{{$jumlah_pegawai}}</div>
+                    <div class="font-size-sm font-w600 text-uppercase text-white-op">Pegawai</div>
                   </div>
                 </div>
               </a>
@@ -113,120 +122,6 @@
             <!-- END Conversion Rate -->
           </div>
           <!-- END Statistics -->
-
-          <!-- Orders Overview -->
-          <div class="content-heading">
-            <div class="dropdown float-right">
-              <button type="button" class="btn btn-sm btn-secondary dropdown-toggle" id="ecom-orders-overview-drop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                This Week
-              </button>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="ecom-orders-overview-drop">
-                <a class="dropdown-item active" href="javascript:void(0)">
-                  <i class="fa fa-fw fa-calendar mr-5"></i>This Week
-                </a>
-                <a class="dropdown-item" href="javascript:void(0)">
-                  <i class="fa fa-fw fa-calendar mr-5"></i>This Month
-                </a>
-                <a class="dropdown-item" href="javascript:void(0)">
-                  <i class="fa fa-fw fa-calendar mr-5"></i>This Year
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="javascript:void(0)">
-                  <i class="fa fa-fw fa-circle-o mr-5"></i>All Time
-                </a>
-              </div>
-            </div>
-            Orders <small class="d-none d-sm-inline">Overview</small>
-          </div>
-
-          <!-- Chart.js Chart functionality is initialized in js/pages/be_pages_ecom_dashboard.min.js which was auto compiled from _js/pages/be_pages_ecom_dashboard.js -->
-          <!-- For more info and examples you can check out http://www.chartjs.org/docs/ -->
-          <div class="row gutters-tiny">
-            <!-- Orders Earnings Chart -->
-            <div class="col-md-6">
-              <div class="block block-rounded block-mode-loading-refresh">
-                <div class="block-header">
-                  <h3 class="block-title">
-                    Earnings
-                  </h3>
-                  <div class="block-options">
-                    <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
-                      <i class="si si-refresh"></i>
-                    </button>
-                    <button type="button" class="btn-block-option">
-                      <i class="si si-wrench"></i>
-                    </button>
-                  </div>
-                </div>
-                <div class="block-content block-content-full bg-body-light text-center">
-                  <div class="row gutters-tiny">
-                    <div class="col-4">
-                      <div class="font-size-sm font-w600 text-uppercase text-muted">All</div>
-                      <div class="font-size-h3 font-w600">$9,587</div>
-                    </div>
-                    <div class="col-4">
-                      <div class="font-size-sm font-w600 text-uppercase text-muted">Profit</div>
-                      <div class="font-size-h3 font-w600 text-success">$8,087</div>
-                    </div>
-                    <div class="col-4">
-                      <div class="font-size-sm font-w600 text-uppercase text-muted">Expenses</div>
-                      <div class="font-size-h3 font-w600 text-danger">$1,500</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="block-content block-content-full">
-                  <div class="pull-all">
-                    <!-- Earnings Chart Container -->
-                    <canvas class="js-chartjs-ecom-dashboard-earnings"></canvas>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- END Orders Earnings Chart -->
-
-            <!-- Orders Volume Chart -->
-            <div class="col-md-6">
-              <div class="block block-rounded block-mode-loading-refresh">
-                <div class="block-header">
-                  <h3 class="block-title">
-                    Volume
-                  </h3>
-                  <div class="block-options">
-                    <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
-                      <i class="si si-refresh"></i>
-                    </button>
-                    <button type="button" class="btn-block-option">
-                      <i class="si si-wrench"></i>
-                    </button>
-                  </div>
-                </div>
-                <div class="block-content block-content-full bg-body-light text-center">
-                  <div class="row gutters-tiny">
-                    <div class="col-4">
-                      <div class="font-size-sm font-w600 text-uppercase text-muted">All</div>
-                      <div class="font-size-h3 font-w600">183</div>
-                    </div>
-                    <div class="col-4">
-                      <div class="font-size-sm font-w600 text-uppercase text-muted">Completed</div>
-                      <div class="font-size-h3 font-w600 text-success">175</div>
-                    </div>
-                    <div class="col-4">
-                      <div class="font-size-sm font-w600 text-uppercase text-muted">Canceled</div>
-                      <div class="font-size-h3 font-w600 text-danger">8</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="block-content block-content-full">
-                  <div class="pull-all">
-                    <!-- Orders Chart Container -->
-                    <canvas class="js-chartjs-ecom-dashboard-orders"></canvas>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- END Orders Volume Chart -->
-          </div>
-          <!-- END Orders Overview -->
 
           <!-- Latest Orders and Top Products -->
           <div class="row gutters-tiny">
@@ -615,5 +510,5 @@
             <!-- END Top Products -->
           </div>
           <!-- END Latest Orders and Top Products -->
-        </div> --}}
+        </div>
 @endsection
