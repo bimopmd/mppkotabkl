@@ -14,6 +14,6 @@
         </div>
         <button type="button" class="btn text-dark" data-bs-toggle="modal" data-bs-target="#searchModal"><i
                 class="fa fa-search"></i></button>
-        <a style="background-color: #82af7c" href="{{route('login')}}" class="btn py-2 px-4 ms-3 text-white">Login</a>
+        <a style="background-color: #82af7c" href="/login" class="btn py-2 px-4 ms-3 text-white">Login</a>
     </div>
 </nav>

@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function showDashboard()
+    public function index()
     {
         $jumlah_pegawai = Pegawai::all()->count();
-        return view('index')->with('jumlah_pegawai', $jumlah_pegawai);
+        return view('authenticate.dashboardView')->with('jumlah_pegawai', $jumlah_pegawai);
     }
 }

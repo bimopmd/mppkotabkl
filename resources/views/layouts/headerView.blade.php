@@ -125,12 +125,12 @@
                 <!-- END Side Overlay -->
 
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{{route('logout')}}"
+                <a class="dropdown-item" href="/logout"
                 onclick="event.preventDefault();
                 document.getElementById('formLogout').submit();">
                   <i class="si si-logout mr-5"></i> Sign Out
                 </a>
-                <form id="formLogout" action="{{route('logout')}}" method="POST">@csrf</form>
+                <form id="formLogout" action="/logout" method="POST">@csrf</form>
               </div>
             </div>
             <!-- END User Dropdown -->

@@ -61,25 +61,25 @@
                   <h2 class="h5 font-w400 text-muted mb-0">Please sign in</h2>
                 </div>
                 <!-- END Header -->
-                <form class="js-validation-signin px-30" action="{{route('login')}}" method="POST">
+                <form class="js-validation-signin px-30" action="/login" method="post">
                     @csrf
                   <div class="form-group row">
                     <div class="col-12">
                       <div class="form-material floating">
-                        <input type="text" class="form-control" id="email" @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}">
                         <label for="email">E-Mail</label>
                         @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
                         @enderror
+                        <input type="text" class="form-control" id="email" @error('email') is-invalid @enderror name="email" value="{{ old('email') }}" autofocus>
                       </div>
                     </div>
                   </div>
                   <div class="form-group row">
                     <div class="col-12">
                       <div class="form-material floating">
-                        <input type="password" class="form-control" id="password" @error('password') is-invalid @enderror" name="password" value="{{ old('password') }}">
+                        <input type="password" class="form-control" id="password" @error('password') is-invalid @enderror name="password" value="{{ old('password') }}">
                         <label for="password">Password</label>
                         @error('password')
                             <span class="invalid-feedback" role="alert">

@@ -3,37 +3,35 @@
 use App\Http\Controllers\FrontEndController;
 use App\Http\Controllers\InstansiController;
 use App\Http\Controllers\PegawaiController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-Route::get('/', [App\Http\Controllers\FrontEndController::class, 'indexFrontEnd']);
-Route::get('frontend/instansi/{id}', [App\Http\Controllers\FrontEndController::class, 'showInstansi']);
+//frontEnd
+Route::get('/', [FrontEndController::class, 'indexFrontEnd']);
+Route::get('frontend/instansi/{id}', [FrontEndController::class, 'showInstansi']);
 
-// Route::resource('/frontend', FrontEndController::class);
 
-Auth::routes();
-Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'showFormLogin'])->name('login');
-Route::post('login/auth', [App\Http\Controllers\Auth\LoginController::class, 'login']);
+//login end Logout
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/logout', [LoginController::class, 'logout']);
 
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'showDashboard'])->name('dashboard');
+//dashboard
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
+
+//middleware Admin
+Route::group(['middleware' =>'isAdmin'], function () {
     Route::resource('/dashboard/instansi', InstansiController::class);
     Route::resource('/dashboard/pegawai', PegawaiController::class);
 });
 
+//middleware Pegawai
+Route::group(['middleware' =>'isPegawai'], function () {
+    Route::resource('/dashboard/instansi', InstansiController::class);
+    Route::resource('/dashboard/pegawai', PegawaiController::class);
+});
 
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//error
+Route::view('/error403', 'errors.403')->middleware('auth');

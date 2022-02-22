@@ -57,7 +57,7 @@
                         </a>
                     </li>
                     <li class="list-inline-item">
-                        <a class="link-effect text-dual-primary-dark" href="{{route('logout')}}" method='POST'>@csrf
+                        <a class="link-effect text-dual-primary-dark" href="/logout" method='POST'>@csrf
                         <i class="si si-logout"></i>
                         </a>
                     </li>
