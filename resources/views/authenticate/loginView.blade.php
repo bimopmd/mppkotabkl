@@ -66,13 +66,13 @@
                   <div class="form-group row">
                     <div class="col-12">
                       <div class="form-material floating">
-                        <label for="email">E-Mail</label>
+                        <input type="text" class="form-control" id="email" @error('email') is-invalid @enderror name="email" value="{{ old('email') }}">
+                        <label for="email">e-mail</label>
                         @error('email')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
                         @enderror
-                        <input type="text" class="form-control" id="email" @error('email') is-invalid @enderror name="email" value="{{ old('email') }}" autofocus>
                       </div>
                     </div>
                   </div>

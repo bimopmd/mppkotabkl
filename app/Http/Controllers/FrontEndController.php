@@ -16,7 +16,7 @@ class FrontEndController extends Controller
 
     public function showInstansi($id)
     {
-        $instansi = Instansi::first();
+        $instansi = Instansi::findOrFail($id);
         return view('layoutsFE.detailFEView', compact('instansi', $instansi));
     }
 }

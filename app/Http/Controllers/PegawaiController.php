@@ -48,7 +48,7 @@ class PegawaiController extends Controller
             'instansi_pegawai'   => 'required',
             'alamat_ktp_pegawai' => 'required|max:13',
             'nope_pegawai'       => 'required|unique:pegawais,nope_pegawai',
-            'foto_pegawai'       => 'image|file|max:1024'
+            'foto_pegawai'       => 'required|image|file|max:1024'
         ]);
 
         if ($request->file('foto_pegawai')) {
@@ -111,5 +111,17 @@ class PegawaiController extends Controller
         Alert::success('Success Deleted', 'Success Deleted Your Data Instansi');
         Pegawai::destroy($pegawai->id);
         return redirect()->back()->with('success', 'Data Berhasil DiHapus');
+    }
+
+    public function indexPegawai()
+    {
+        $pegawai = Pegawai::all();
+        return view('pegawai.pegawaiView', compact('pegawai'));
+    }
+
+    public function showPegawai($id)
+    {
+        $pegawai = Pegawai::findOrFail($id);
+        return view('pegawai.pegawaiDetailView', compact('pegawai', $pegawai));
     }
 }

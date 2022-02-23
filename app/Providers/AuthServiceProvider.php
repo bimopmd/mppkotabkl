@@ -14,6 +14,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+        // 'App\Models\Pegawai' => 'App\Policies\PegawaiPolicy',
     ];
 
     /**
@@ -25,6 +26,20 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('isAdminCreate', function($user) {
+           return $user->level == 1;
+        });
+
+        Gate::define('isAdminDetail', function($user) {
+           return $user->level == 1;
+        });
+
+        Gate::define('isAdminUpdate', function($user) {
+           return $user->level == 1;
+        });
+
+        Gate::define('isAdminDelete', function($user) {
+           return $user->level == 1;
+        });
     }
 }

@@ -72,6 +72,7 @@
                     <li>
                     <a href="{{route('dashboard')}}"><i class="si si-cup"></i><span class="sidebar-mini-hide">Dashboard</span></a>
                     </li>
+                    @if (auth()->user()->level == 1)
                     <li class="nav-main-heading"><span class="sidebar-mini-visible">UI</span><span class="sidebar-mini-hidden">User Interface</span></li>
                     <li>
                     <a href="{{route('pegawai.index')}}"><i class="si si-users"></i><span class="sidebar-mini-hide">Pegawai</span></a>
@@ -79,6 +80,11 @@
                     <li>
                     <a href="{{route('instansi.index')}}"><i class="si si-puzzle"></i><span class="sidebar-mini-hide">Instansi</span></a>
                     </li>
+                    @elseif(auth()->user()->level == 2)
+                    <li>
+                    <a href="/dashboard/pegawaiIndex"><i class="si si-puzzle"></i><span class="sidebar-mini-hide">Pegawai</span></a>
+                    </li>
+                    @endif
                 </ul>
                 </div>
                 <!-- END Side Navigation -->

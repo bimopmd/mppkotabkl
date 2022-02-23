@@ -19,18 +19,20 @@ Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
 //dashboard
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
+});
 
 //middleware Admin
 Route::group(['middleware' =>'isAdmin'], function () {
-    Route::resource('/dashboard/instansi', InstansiController::class);
     Route::resource('/dashboard/pegawai', PegawaiController::class);
+    Route::resource('/dashboard/instansi', InstansiController::class);
 });
 
 //middleware Pegawai
 Route::group(['middleware' =>'isPegawai'], function () {
-    Route::resource('/dashboard/instansi', InstansiController::class);
-    Route::resource('/dashboard/pegawai', PegawaiController::class);
+    Route::get('/dashboard/pegawaiIndex', [PegawaiController::class, 'indexPegawai']);
+    Route::get('/dashboard/pegawaiShow/{id}', [PegawaiController::class, 'showPegawai']);
 });
 
 //error

@@ -24,13 +24,15 @@
                             <!-- Breadcrumb -->
                             {{ Breadcrumbs::render('pegawai') }}
                             <!-- end Breadcrumb -->
-                        <h3 class="block-title"><small></small></h3>
+                            <h3 class="block-title"><small></small></h3>
+                            @can('isAdminCreate')
                             <a href="{{route('pegawai.create')}}" class="btn btn-primary" onclick="Codebase.loader('show', 'bg-gd-dusk');
                                     setTimeout(function () {
                                         Codebase.loader('hide');
                                     }, 3000);">
                                 <i class="fa fa-plus mr-5"></i>Add Data
                             </a>
+                            @endcan
                         </div>
                         <div class="block-content block-content-full">
                         <table class="table table-bordered table-striped table-vcenter js-dataTable-full">
@@ -65,16 +67,29 @@
                                     </td>
                                 @endif
                                 <td class="text-center">
+
+                                    @if (auth()->user()->level == 1)
+                                    @can('isAdminDetail')
                                     <a href="{{url('dashboard/pegawai/'.$data->id.'')}}" class="btn btn-sm btn-success " data-toggle="tooltip" data-placement="left" title="Detail Data"><i class="fa fa-eye" class="d-inline"></i></a>
+                                    @endcan
+                                    @elseif (auth()->user()->level == 2)
+                                    <a href="{{url('dashboard/pegawaiShow/'.$data->id.'')}}" class="btn btn-sm btn-success " data-toggle="tooltip" data-placement="left" title="Detail Data"><i class="fa fa-eye" class="d-inline"></i></a>
+                                    @endif
 
+
+                                    @can('isAdminUpdate')
                                     <a href="/dashboard/pegawai/{{$data->id}}/edit" class="btn btn-sm btn-warning" data-placement="left" title="Ubah Data" data-toggle="tooltip"><i class="fa fa-gear"></i></a>
+                                    @endcan
 
+
+                                    @can('isAdminDelete')
                                     <button href="" data-id="{{$data->id}}" class="btn btn-sm btn-danger swal-hapus" data-placement="left" title="Hapus Data" data-toggle="tooltip"><i class="fa fa-trash"></i>
                                         <form action="/dashboard/pegawai/{{$data->id}}" method="POST" id="delete{{$data->id}}" class="d-inline">
                                             @csrf
                                             @method('delete')
                                         </form>
                                     </button>
+                                    @endcan
                                     </td>
                                 </tr>
                                 @endforeach

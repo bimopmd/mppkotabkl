@@ -11,18 +11,30 @@
                 <!-- Breadcrumb -->
                 {{ Breadcrumbs::render('detailPegawai') }}
                 <!-- end Breadcrumb -->
-              <div class="btn-group float-right">
+                @can('isAdmin')
+                <div class="btn-group float-right">
                 <a class="btn btn-warning" onclick="Codebase.loader('show', 'bg-gd-dusk');
                 setTimeout(function () {
                 Codebase.loader('hide');
                 }, 3000);"
                 href="{{url('/dashboard/pegawai/'.$pegawai->id.'/edit')}}"><i class="fa fa-gear text-white mr-5"></i> Edit</a>
+                </div>
+                @endcan
 
-              </div><a class="btn btn-success" onclick="Codebase.loader('show', 'bg-gd-dusk');
-                setTimeout(function () {
-                Codebase.loader('hide');
-                }, 3000);"
-                href="{{route('pegawai.index')}}"><i class="fa fa-chevron-left text-white mr-5"></i> Back</a>
+                @if (auth()->user()->level == 1)
+                <a class="btn btn-success" onclick="Codebase.loader('show', 'bg-gd-dusk');
+                  setTimeout(function () {
+                  Codebase.loader('hide');
+                  }, 3000);"
+                  href="{{route('pegawai.index')}}"><i class="fa fa-chevron-left text-white mr-5"></i> Back</a>
+                @elseif(auth()->user()->level == 2)
+                  <a class="btn btn-success" onclick="Codebase.loader('show', 'bg-gd-dusk');
+                  setTimeout(function () {
+                  Codebase.loader('hide');
+                  }, 3000);"
+                  href="/dashboard/pegawaiIndex"><i class="fa fa-chevron-left text-white mr-5"></i> Back</a>
+                @endif
+
             </div>
             <!-- END Navigation -->
 

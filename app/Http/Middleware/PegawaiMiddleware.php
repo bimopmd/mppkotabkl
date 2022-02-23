@@ -16,7 +16,7 @@ class PegawaiMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (auth()->user()->level == 'pegawai') {
+        if (auth()->user()->level == 2) {
             return $next($request);
         }
         return redirect('/error403');
