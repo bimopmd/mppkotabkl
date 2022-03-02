@@ -62,6 +62,13 @@
     <link href="{{asset('assets/css/style-dentcare.css')}}" rel="stylesheet">
     <!-- end css dentcare -->
 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
 
 </head>
 
@@ -372,7 +379,7 @@
               <div class="col-lg-5">
                 <div id="map">
                   <iframe
-                    src="https://maps.google.com/maps?q=Av.+L%C3%BAcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    {{-- src="https://maps.google.com/maps?q=Av.+L%C3%BAcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed" --}}
                     width="100%" height="636px" frameborder="0" style="border:0" allowfullscreen></iframe>
                 </div>
               </div>
@@ -456,7 +463,34 @@
     <!-- Back to Top -->
     <a href="#" style="color: #82af7c" class="btn btn-lg btn-warning btn-lg-square rounded back-to-top" ><i class="bi bi-arrow-up"></i></a>
 
+    <script>
+        var map = L.map('map').setView([-3.790392, 102.271513], 15);
 
+        var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+            maxZoom: 18,
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+                'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1
+        }).addTo(map);
+
+        var marker = L.marker([-3.790392, 102.271513]).addTo(map);
+
+        var circle = L.circle([-3.790392, 102.271513], {
+            color: 'red',
+            fillColor: '#f03',
+            fillOpacity: 0.5,
+            radius: 20
+        }).addTo(map);
+
+        var polygon = L.polygon([
+            [51.509, -0.08],
+            [51.503, -0.06],
+            [51.51, -0.047]
+        ]).addTo(map);
+
+    </script>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -480,8 +514,8 @@
     <script src="{{asset('assets/plugins/slick/slick-animation.min.js')}}"></script>
     <script src="{{asset('assets/plugins/colorbox/jquery.colorbox.js')}}"></script>
     <script src="{{asset('assets/plugins/shuffle/shuffle.min.js')}}" defer></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU" defer></script>
-    <script src="{{asset('assets/plugins/google-map/map.js')}}" defer></script>
+    {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU" defer></script> --}}
+    {{-- <script src="{{asset('assets/plugins/google-map/map.js')}}" defer></script> --}}
     <script src="{{asset('assets/js/script-constra.js')}}"></script>
 
     <!-- js digimedia -->
@@ -493,7 +527,7 @@
     <script src="{{asset('assets/js/custom-digimedia.js')}}"></script>
 
     {{-- mapss --}}
-    <script src="http://maps.googleapis.com/maps/api/js"></script>
+    {{-- <script src="http://maps.googleapis.com/maps/api/js"></script> --}}
 
     <script>
         // fungsi initialize untuk mempersiapkan peta

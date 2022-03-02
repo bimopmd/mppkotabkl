@@ -67,5 +67,6 @@ class Kernel extends HttpKernel
 
         'isPegawai' => \App\Http\Middleware\PegawaiMiddleware::class,
         'isAdmin' => \App\Http\Middleware\AdminMiddleware::class,
+        'isRakyat' => \App\Http\Middleware\RakyatMiddleware::class,
     ];
 }

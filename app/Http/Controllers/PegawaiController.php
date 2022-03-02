@@ -124,4 +124,8 @@ class PegawaiController extends Controller
         $pegawai = Pegawai::findOrFail($id);
         return view('pegawai.pegawaiDetailView', compact('pegawai', $pegawai));
     }
+
+    public function error404(){
+        return \view('errors.404');
+    }
 }

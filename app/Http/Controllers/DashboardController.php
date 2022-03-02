@@ -12,4 +12,9 @@ class DashboardController extends Controller
         $jumlah_pegawai = Pegawai::all()->count();
         return view('authenticate.dashboardView')->with('jumlah_pegawai', $jumlah_pegawai);
     }
+
+    public function error404()
+    {
+        return view('errors.404');
+    }
 }

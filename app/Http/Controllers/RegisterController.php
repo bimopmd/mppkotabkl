@@ -30,7 +30,7 @@ class RegisterController extends Controller
         $validateData['password'] = Hash::make($validateData['password']);
 
         User::create($validateData);
-        Alert::toast('data anda sudah terdaftar', 'success');
+        Alert::toast('harap hubungi bidang IT untuk aktivasi', 'success');
         return redirect('/login');
     }
 }

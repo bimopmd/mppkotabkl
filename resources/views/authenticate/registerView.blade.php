@@ -101,7 +101,7 @@
                     <div class="col-12">
                       <div class="form-material floating">
                         <input type="text" class="form-control" id="instansi" name="instansi" value="{{old('instansi')}}">
-                        <label for="instansi">Nama</label>
+                        <label for="instansi">Instansi</label>
                       </div>
                     </div>
                   </div>
