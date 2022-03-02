@@ -9,7 +9,7 @@ class Instansi extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'nama_instansi',
+        'pegawai_id',
         'alamat_instansi',
         'web_instansi',
         'nope_instansi',
@@ -24,4 +24,11 @@ class Instansi extends Model
         'biaya_layanan_instansi',
         'alur_layanan_instansi'
     ];
+
+    // protected $guarded = ['id'];
+
+    public function pegawai()
+    {
+        return $this->belongsTo('App\Models\Pegawai');
+    }
 }

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DaftarInstansi;
 use App\Models\Instansi;
+use App\Models\Kantor;
+use App\Models\Pegawai;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -17,8 +20,9 @@ class InstansiController extends Controller
     public function index()
     {
         //
-        $instansi = Instansi::get();
-        return view('instansi.instansiView', ['instansi' => $instansi]);
+        $instansi = Instansi::all();
+        // $instansi = Instansi::with('')->get();
+        return view('instansi.instansiView', compact('instansi'));
     }
 
     /**
@@ -28,7 +32,9 @@ class InstansiController extends Controller
      */
     public function create()
     {
-        return view('instansi.instansiCreateView');
+        $pegawai = Pegawai::all();
+        return view('instansi.instansiCreateView', compact('pegawai'));
+        // return view('instansi.instansiCreateView');
     }
 
     /**
@@ -39,9 +45,8 @@ class InstansiController extends Controller
      */
     public function store(Request $request, Instansi $instansi)
     {
-        // return $request->file('logo_instansi')->store('instansi-file');
-        $validation = $request->validate([
-            'nama_instansi'                 => 'required',
+        // return $request;
+        $validation = $request->validate(['pegawai_id'                    => 'required',
             'alamat_instansi'               => 'required',
             'web_instansi'                  => 'required',
             'nope_instansi'                 => 'required|max:13',
@@ -151,5 +156,11 @@ class InstansiController extends Controller
         Alert::success('Success Deleted', 'Success Deleted Your Data Instansi');
         Instansi::destroy($instansi->id);
         return redirect()->back()->with('success', 'Data Berhasil DiHapus');
+    }
+
+    public function indexInstansi(Instansi $instansi)
+    {
+        $instansi = Instansi::get();
+        return view('instansi.instansiView', ['instansi' => $instansi]);
     }
 }

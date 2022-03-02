@@ -18,6 +18,7 @@ class PegawaiMiddleware
     {
         if (auth()->user()->level == 2) {
             return $next($request);
+            # code...
         }
         return redirect('/error403');
     }

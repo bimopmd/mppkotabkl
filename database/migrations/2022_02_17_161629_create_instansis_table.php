@@ -15,7 +15,8 @@ class CreateInstansisTable extends Migration
     {
         Schema::create('instansis', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_instansi');
+            $table->foreignId('pegawai_id')->constrained('pegawais')->onDelete('cascade')->onUpdate('cascade');
+            // $table->bigInteger('daftarinstansi_id')->unsigned();
             $table->text('alamat_instansi');
             $table->string('web_instansi')->nullable();
             $table->string('nope_instansi')->nullable();
@@ -31,6 +32,10 @@ class CreateInstansisTable extends Migration
             $table->string('alur_layanan_instansi')->nullable();
             $table->timestamps();
         });
+
+        // Schema::create('instansis', function (Blueprint $table) {
+        //     $table->foreign('daftarinstansi_id')->references('id')->on('daftarinstansis')->onDelete('cascade')->onUpdate('cascade');
+        // });
     }
 
     /**

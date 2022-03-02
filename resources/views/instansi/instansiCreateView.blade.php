@@ -25,10 +25,15 @@
             <div class="form-group row">
                 <div class="col-6">
                 <div class="form-material form-material-primary floating">
-                    <input type="text" class="form-control" id="nama_instansi" name="nama_instansi" value="{{old('nama_instansi')}}">
-                    <label for="nama_instansi" @error('nama_instansi')
+                    <select type="text" class="form-control" id="pegawai_id" name="pegawai_id" value="{{old('pegawai_id')}}">
+                        <option value="">--  --</option>
+                        @foreach ($pegawai as $item)
+                        <option value="{{$item->id}}" {{old('pegawai_id') == $item->id ? 'selected' : null}} >{{$item->instansi_pegawai}}</option>
+                        @endforeach
+                    </select>
+                    <label for="pegawai_id" @error('pegawai_id')
                     class="text-danger"
-                    @enderror>Nama Instansi @error('nama_instansi')
+                    @enderror>Nama Instansi @error('pegawai_id')
                         | {{$message}}
                     @enderror</label>
                 </div>

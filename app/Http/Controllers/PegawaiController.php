@@ -46,8 +46,8 @@ class PegawaiController extends Controller
             'nip_pegawai'        => 'required|min:18|unique:pegawais,nip_pegawai',
             'nama_pegawai'       => 'required',
             'instansi_pegawai'   => 'required',
-            'alamat_ktp_pegawai' => 'required|max:13',
-            'nope_pegawai'       => 'required|unique:pegawais,nope_pegawai',
+            'alamat_ktp_pegawai' => 'required',
+            'nope_pegawai'       => 'required|unique:pegawais,nope_pegawai|max:13',
             'foto_pegawai'       => 'required|image|file|max:1024'
         ]);
 

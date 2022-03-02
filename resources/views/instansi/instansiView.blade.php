@@ -32,12 +32,14 @@
                             {{ Breadcrumbs::render('instansi') }}
                             <!-- end Breadcrumb -->
                         <h3 class="block-title"><small></small></h3>
-                            <a href="{{route('instansi.create')}}" class="btn btn-primary" onclick="Codebase.loader('show', 'bg-gd-dusk');
-                                    setTimeout(function () {
-                                        Codebase.loader('hide');
-                                    }, 3000);">
-                                <i class="fa fa-plus mr-5"></i>Add Data
-                            </a>
+                        @can('isAdminCreate')
+                        <a href="{{route('instansi.create')}}" class="btn btn-primary" onclick="Codebase.loader('show', 'bg-gd-dusk');
+                                setTimeout(function () {
+                                    Codebase.loader('hide');
+                                }, 3000);">
+                            <i class="fa fa-plus mr-5"></i>Add Data
+                        </a>
+                        @endcan
                         </div>
                         <div class="block-content block-content-full">
                         <table class="table table-bordered table-striped table-vcenter js-dataTable-full">
@@ -57,7 +59,7 @@
                                 @foreach ($instansi as $no => $data)
                                 <tr>
                                 <td class="text-center">{{$no+1}}</td>
-                                <td class="text-center font-w600">{{$data->nama_instansi}}</td>
+                                <td class="text-center font-w600">{{$data->pegawai->instansi_pegawai}}</td>
                                 <td class="text-center font-w600">{{$data->web_instansi}}</td>
                                 <td class="text-center font-w600">{{$data->email_instansi}}</td>
                                 <td class="text-center font-w600">{!!$data->nope_instansi!!}</td>
@@ -72,21 +74,26 @@
                                     </td>
                                 @endif
                                 <td class="text-center">
-                                    <a href="{{url('dashboard/instansi/'.$data->id.'')}}" class="btn btn-sm btn-success " data-toggle="tooltip" data-placement="left" title="Detail Data"><i class="fa fa-eye" class="d-inline"></i></a>
+                                    @if (auth()->user()->level == 1)
+                                    @can('isAdminDetail')
+                                        <a href="{{url('dashboard/instansi/'.$data->id.'')}}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="left" title="Detail Data"><i class="fa fa-eye" class="d-inline"></i></a>
+                                    @endcan
+                                    @elseif(auth()->user()->level == 2)
+                                        <a href="{{url('dashboard/instansiShow/'.$data->id.'')}}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="left" title="Detail Data"><i class="fa fa-eye" class="d-inline"></i></a>
+                                    @endif
 
-                                    <a href="/dashboard/instansi/{{$data->id}}/edit" class="btn btn-sm btn-warning" data-placement="left" title="Ubah Data" data-toggle="tooltip"><i class="fa fa-gear"></i></a>
+                                    @can('isAdminEdit')
+                                        <a href="/dashboard/instansi/{{$data->id}}/edit" class="btn btn-sm btn-warning" data-placement="left" title="Ubah Data" data-toggle="tooltip"><i class="fa fa-gear"></i></a>
+                                    @endcan
 
-                                    {{-- <form action="/dashboard/instansi/{{$data->id}}" method="POST" class="d-inline">
-                                        @method('delete')
-                                        @csrf
-                                        <button href="" class="btn btn-sm btn-danger" data-placement="left" title="Hapus Data" data-toggle="tooltip"><span class="fa fa-trash"></span></button>
-                                    </form> --}}
-                                    <button href="" data-id="{{$data->id}}" class="btn btn-sm btn-danger swal-hapus" data-placement="left" title="Hapus Data" data-toggle="tooltip"><i class="fa fa-trash"></i>
-                                        <form action="/dashboard/instansi/{{$data->id}}" method="POST" id="delete{{$data->id}}" class="d-inline">
-                                            @csrf
-                                            @method('delete')
-                                        </form>
-                                    </button>
+                                    @can('isAdminDelete')
+                                        <button href="" data-id="{{$data->id}}" class="btn btn-sm btn-danger swal-hapus" data-placement="left" title="Hapus Data" data-toggle="tooltip"><i class="fa fa-trash"></i>
+                                            <form action="/dashboard/instansi/{{$data->id}}" method="POST" id="delete{{$data->id}}" class="d-inline">
+                                                @csrf
+                                                @method('delete')
+                                            </form>
+                                        </button>
+                                    @endcan
                                     </td>
                                 </tr>
                                 @endforeach
