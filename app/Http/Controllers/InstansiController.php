@@ -46,7 +46,8 @@ class InstansiController extends Controller
     public function store(Request $request, Instansi $instansi)
     {
         // return $request;
-        $validation = $request->validate(['pegawai_id'                    => 'required',
+        $validation = $request->validate([
+            'pegawai_id'                    => 'required',
             'alamat_instansi'               => 'required',
             'web_instansi'                  => 'required',
             'nope_instansi'                 => 'required|max:13',
