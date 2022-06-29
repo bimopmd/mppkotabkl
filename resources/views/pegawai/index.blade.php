@@ -1,4 +1,4 @@
-@extends('layouts.masterView')
+@extends('layouts.master')
 @section('title','MPP')
 @push('css-custom')
 <style>
@@ -77,7 +77,7 @@
                                     @endif
 
 
-                                    @can('isAdminUpdate')
+                                    @can('isAdminEdit')
                                     <a href="/dashboard/pegawai/{{$data->id}}/edit" class="btn btn-sm btn-warning" data-placement="left" title="Ubah Data" data-toggle="tooltip"><i class="fa fa-gear"></i></a>
                                     @endcan
 

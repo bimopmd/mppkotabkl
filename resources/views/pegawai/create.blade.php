@@ -1,5 +1,5 @@
 
-@extends('layouts.masterView')
+@extends('layouts.master')
 @section('title','Add Data Pegawai')
 @section('content')
 
@@ -98,15 +98,23 @@
                 </div>
             </div>
             <br>
+            {{-- <div class="col-6">
+            <div class="form-group row">
+                <div class="col-2">
+                <button type="submit" class="btn btn-block btn-alt-primary"></i>Save</button>
+                <a href="{{route('pegawai.index')}}" class="btn btn-alt-danger" class="d-inline">Back</a>
+                </div>
+            </div>
+            </div> --}}
             <div class="form-group row">
                 <div class="col-6 form-group">
                 <div class="form-material">
-                    {{--  --}}
+
                 </div>
                 </div>
-                <div class="col-2">
+                <div class="col-6">
                 <div class="form-group row">
-                    <div class="col-lg-9 ml-auto">
+                    <div class="col-lg-9">
                     <button type="submit" class="btn btn-alt-primary">Create</button>
                     <a href="{{route('pegawai.index')}}" class="btn btn-alt-danger" class="d-inline">Back</a>
                     </div>
@@ -119,9 +127,6 @@
 
     </div>
     </div>
-    <!-- Bootstrap Forms Validation -->
-    <!-- Material Forms Validation -->
-    <!-- END Material Forms Validation -->
 </div>
 <!-- END Page Content -->
 </main>

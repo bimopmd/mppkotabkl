@@ -27,7 +27,7 @@
                 src: url('assets/font/Montserrat-VariableFont_wght.ttf') format('truetype');
             }
     </style>
-<div id="services" class="services section">
+    <div id="services" class="services section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">

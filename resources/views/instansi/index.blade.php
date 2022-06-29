@@ -1,4 +1,4 @@
-@extends('layouts.masterView')
+@extends('layouts.master')
 @section('title','MPP')
 @push('css-custom')
 <style>
@@ -83,7 +83,7 @@
                                     @endif
 
                                     @can('isAdminEdit')
-                                        <a href="/dashboard/instansi/{{$data->id}}/edit" class="btn btn-sm btn-warning" data-placement="left" title="Ubah Data" data-toggle="tooltip"><i class="fa fa-gear"></i></a>
+                                    <a href="/dashboard/instansi/{{$data->id}}/edit" class="btn btn-sm btn-warning" data-placement="left" title="Ubah Data" data-toggle="tooltip"><i class="fa fa-gear"></i></a>
                                     @endcan
 
                                     @can('isAdminDelete')

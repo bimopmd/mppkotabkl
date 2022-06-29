@@ -19,7 +19,7 @@ class PegawaiController extends Controller
     {
         //
         $pegawai = Pegawai::get();
-        return view('pegawai.pegawaiView', compact('pegawai'));
+        return view('pegawai.index', compact('pegawai'));
     }
 
     /**
@@ -30,7 +30,7 @@ class PegawaiController extends Controller
     public function create()
     {
         //
-        return \view('pegawai.pegawaiCreateView');
+        return \view('pegawai.create');
     }
 
     /**
@@ -69,7 +69,7 @@ class PegawaiController extends Controller
     public function show(Pegawai $pegawai)
     {
         //
-        return view('pegawai.pegawaiDetailView', compact('pegawai'));
+        return view('pegawai.detail', compact('pegawai'));
     }
 
     /**
@@ -81,7 +81,7 @@ class PegawaiController extends Controller
     public function edit(Pegawai $pegawai)
     {
         //
-        return view('pegawai.pegawaiEditView', compact('pegawai'));
+        return view('pegawai.edit', compact('pegawai'));
     }
 
     /**
@@ -116,13 +116,13 @@ class PegawaiController extends Controller
     public function indexPegawai()
     {
         $pegawai = Pegawai::all();
-        return view('pegawai.pegawaiView', compact('pegawai'));
+        return view('pegawai.index', compact('pegawai'));
     }
 
     public function showPegawai($id)
     {
         $pegawai = Pegawai::findOrFail($id);
-        return view('pegawai.pegawaiDetailView', compact('pegawai', $pegawai));
+        return view('pegawai.detail', compact('pegawai', $pegawai));
     }
 
     public function error404(){

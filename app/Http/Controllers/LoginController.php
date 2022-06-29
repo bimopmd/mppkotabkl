@@ -8,7 +8,7 @@ class LoginController extends Controller
 {
     public function index()
     {
-        return view('authenticate.loginView');
+        return view('authenticate.login');
     }
 
     public function authenticate(Request $request)

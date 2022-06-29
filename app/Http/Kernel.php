@@ -64,9 +64,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
 
-
-        'isPegawai' => \App\Http\Middleware\PegawaiMiddleware::class,
         'isAdmin' => \App\Http\Middleware\AdminMiddleware::class,
-        'isRakyat' => \App\Http\Middleware\RakyatMiddleware::class,
+        'isPegawai' => \App\Http\Middleware\PegawaiMiddleware::class,
     ];
 }

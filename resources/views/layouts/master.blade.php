@@ -62,7 +62,7 @@
       <!-- END Side Overlay -->
 
       <!-- Sidebar -->
-      @include('layouts.sidebarView')
+      @include('layouts.sidebar')
       <!-- END Sidebar -->
 
       <!-- Header -->
@@ -70,7 +70,7 @@
         <!-- Header Content -->
         <div class="content-header">
           <!-- Right Section -->
-          @include('layouts.headerView')
+          @include('layouts.header')
           <!-- END Right Section -->
         </div>
         <!-- END Header Content -->
@@ -138,7 +138,7 @@
       </main>
       <!-- END Main Container -->
       <!-- Footer -->
-      @include('layouts.footerView')
+      @include('layouts.footer')
       @yield('preview-logo')
       @yield('preview-alur')
       @yield('preview-gambar')

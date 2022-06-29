@@ -1,5 +1,5 @@
 
-@extends('layouts.masterView')
+@extends('layouts.master')
 @section('title','Add Data Instansi')
 @section('content')
 
@@ -9,7 +9,7 @@
     <div class="block">
     <div class="block-header block-header-default">
         <!-- Breadcrumb -->
-        {{ Breadcrumbs::render('editInstansi') }}
+        {{ Breadcrumbs::render('addInstansi') }}
         <!-- end Breadcrumb -->
         <div class="block-options">
         <button type="button" class="btn-block-option">
@@ -20,23 +20,27 @@
     <div class="block-content form-material">
         <div class="row justify-content-center py-10">
         <div class="col-xl-11">
-        <form class="js-validation-bootstrap" action="/dashboard/instansi/{{$instansi->id}} " method="post" enctype="multipart/form-data">
-            @method('PUT')
+            <form class="js-validation-bootstrap" action="{{route('instansi.store')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-group row">
                 <div class="col-6">
-                <div class="form-material">
-                    <input type="text" class="form-control d-inline" id="nama_instansi" name="nama_instansi" value="{{old('nama_instansi', $instansi->nama_instansi)}}" placeholder="......">
-                    <label for="nama_instansi" @error('nama_instansi')
+                <div class="form-material form-material-primary floating">
+                    <select type="text" class="form-control" id="pegawai_id" name="pegawai_id" value="{{old('pegawai_id')}}">
+                        <option value=""> </option>
+                        @foreach ($pegawai as $item)
+                        <option value="{{$item->id}}" {{old('pegawai_id') == $item->id ? 'selected' : null}} >{{$item->instansi_pegawai}}</option>
+                        @endforeach
+                    </select>
+                    <label for="pegawai_id" @error('pegawai_id')
                     class="text-danger"
-                    @enderror>Nama Instansi @error('nama_instansi')
+                    @enderror>Nama Instansi @error('pegawai_id')
                         | {{$message}}
                     @enderror</label>
                 </div>
                 </div>
                 <div class="col-6">
-                <div class="form-material">
-                    <input type="text" class="form-control" id="alamat_instansi" name="alamat_instansi" value="{{old('alamat_instansi', $instansi->alamat_instansi)}}" placeholder="......">
+                <div class="form-material form-material-primary floating">
+                    <input type="text" class="form-control" id="alamat_instansi" name="alamat_instansi" value="{{old('alamat_instansi')}}">
                     <label for="alamat_instansi" @error('alamat_instansi')
                     class="text-danger"
                     @enderror>Alamat Instansi @error('alamat_instansi')
@@ -48,46 +52,46 @@
             <br>
             <div class="form-group row">
                 <div class="col-6">
-                <div class="form-material">
+                <div class="form-material form-material-primary floating">
+                    <input type="text" class="form-control" id="web_instansi" name="web_instansi" value="{{old('web_instansi')}}">
                     <label for="web_instansi" @error('web_instansi')
                     class="text-danger"
                     @enderror>Link Website @error('web_instansi')
                         | {{$message}}
                     @enderror</label>
-                    <input type="text" class="form-control" id="web_instansi" name="web_instansi" value="{{old('web_instansi', $instansi->web_instansi)}}" placeholder="......">
                 </div>
                 </div>
                 <div class="col-lg-6">
-                <div class="form-material">
+                <div class="form-material form-material-primary floating ">
+                    <input type="text" class="js-maxlength form-control" id="nope_instansi" name="nope_instansi" value="{{old('nope_instansi')}}" onkeypress="return hanyaAngka(event)" maxlength="13" data-always-show="true" data-pre-text="Used " data-separator=" of " data-post-text=" characters">
                     <label for="nope_instansi" @error('nope_instansi')
                     class="text-danger"
                     @enderror>No. Handphone @error('nope_instansi')
                         | {{$message}}
                     @enderror</label>
-                    <input type="text" class="js-maxlength form-control" id="nope_instansi" name="nope_instansi" value="{{old('nope_instansi', $instansi->nope_instansi)}}" maxlength="13" placeholder="Try typing beyond max 13 chars..">
                 </div>
                 </div>
             </div>
             <br>
             <div class="form-group row">
                 <div class="col-6">
-                <div class="form-material">
+                <div class="form-material form-material-primary floating">
+                    <input type="text" class="form-control" id="email_instansi" name="email_instansi" value="{{old('email_instansi')}}">
                     <label for="email_instansi" @error('email_instansi')
                     class="text-danger"
-                    @enderror>e-Mail @error('email_instansi')
+                    @enderror>Email Instansi @error('email_instansi')
                         | {{$message}}
                     @enderror</label>
-                    <input type="text" class="form-control" id="email_instansi" name="email_instansi" value="{{old('email_instansi', $instansi->email_instansi)}}" placeholder="......">
                 </div>
                 </div>
                 <div class="col-6">
-                <div class="form-material">
+                <div class="form-material form-material-primary floating">
+                    <input type="text" class="form-control" id="biaya_layanan_instansi" name="biaya_layanan_instansi" value="{{old('biaya_layanan_instansi')}}">
                     <label for="biaya_layanan_instansi" @error('biaya_layanan_instansi')
                     class="text-danger"
-                    @enderror>Biaya @error('biaya_layanan_instansi')
+                    @enderror>Biaya Layanan @error('biaya_layanan_instansi')
                         | {{$message}}
                     @enderror</label>
-                    <input type="text" class="form-control" id="biaya_layanan_instansi" name="biaya_layanan_instansi" value="{{old('biaya_layanan_instansi', $instansi->biaya_layanan_instansi)}}" placeholder=".....">
                 </div>
                 </div>
             </div>
@@ -102,14 +106,9 @@
                         | {{$message}}
                     @enderror</label>
                     <div class="col-lg">
-                    <input type="hidden" name="oldImageLogo" value="{{$instansi->logo_instansi}}">
-                    @if ($instansi->logo_instansi)
-                        <img src="{{asset('storage/'. $instansi->logo_instansi)}}" class="img-preview-logo img-fluid mb-2 col-sm-2">
-                    @else
-                        <img class="img-preview-logo img-fluid mb-2 col-sm-2 d-block">
-                    @endif
+                    <img class="img-preview-logo img-fluid mb-2 col-sm-2 d-block">
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="logo_instansi" name="logo_instansi" value="{{old('logo_instansi', $instansi->logo_instansi)}}" onchange="previewLogo()" data-toggle="custom-file-input">
+                        <input type="file" class="custom-file-input" id="logo_instansi" name="logo_instansi" value="{{old('logo_instansi')}}" onchange="previewLogo()" data-toggle="custom-file-input">
                         <label class="custom-file-label" for="logo_instansi">Choose file</label>
                     </div>
                     </div>
@@ -123,14 +122,9 @@
                         | {{$message}}
                     @enderror</label>
                     <div class="col-lg">
-                    <input type="hidden" name="oldImageAlur" value="{{$instansi->alur_layanan_instansi}}">
-                    @if ($instansi->alur_layanan_instansi)
-                        <img src="{{asset('storage/' . $instansi->alur_layanan_instansi)}}" class="img-preview-alur img-fluid mb-2 col-sm-2 d-block">
-                    @else
-
-                    @endif
+                    <img class="img-preview-alur img-fluid mb-2 col-sm-2 d-block">
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="alur_layanan_instansi" name="alur_layanan_instansi" value="{{old('alur_layanan_instansi', $instansi->alur_layanan_instansi)}}" onchange="previewAlur()" data-toggle="custom-file-input">
+                        <input type="file" class="custom-file-input" id="alur_layanan_instansi" name="alur_layanan_instansi" value="{{old('alur_layanan_instansi')}}" onchange="previewAlur()" data-toggle="custom-file-input">
                         <label class="custom-file-label" for="alur_layanan_instansi">Choose file</label>
                     </div>
                     </div>
@@ -148,24 +142,24 @@
                     @enderror>Profile @error('profile_instansi')
                         | {{$message}}
                     @enderror</label>
-                    <input type="hidden" class="form-control" id="profile_instansi" name="profile_instansi" value="{{old('profile_instansi', $instansi->profile_instansi)}}" rows="3" placeholder="......"></input>
-                    <trix-editor input="profile_instansi" class="form-control" ></trix-editor>
+                    <input type="hidden" class="form-control" id="profile_instansi" name="profile_instansi" value="{{old('profile_instansi')}}" rows="3" placeholder="......"></input>
+                    <trix-editor input="profile_instansi"></trix-editor>
                 </div>
                 </div>
                 <div class="col-lg-6">
-                <div class="form-material">
+                <div class="form-material form-material-primary">
                     <label for="kategori_instansi" @error('kategori_instansi')
                     class="text-danger"
                     @enderror>Kategori Instansi @error('kategori_instansi')
                         | {{$message}}
                     @enderror </label>
-                    <select class="js-select2 form-control" id="kategori_instansi" name="kategori_instansi" value="{{old('kategori_instansi', $instansi->kategori_instansi)}}" style="width: 100%;" data-placeholder="Pilihan --">
-                        <option>-- Pilihan --</option>
-                        <option value="Kesehatan"@if($instansi->kategori_instansi == 'Kesehatan') selected='selected' @endif>Kesehatan</option>
-                        <option value="Pemerintahan"@if($instansi->kategori_instansi == 'Pemerintahan') selected='selected' @endif>Pemerintahan</option>
-                        <option value="BUMN"@if($instansi->kategori_instansi == 'BUMN') selected='selected' @endif>BUMN</option>
-                        <option value="BUMD"@if($instansi->kategori_instansi == 'BUMD') selected='selected' @endif>BUMD</option>
-                        <option value="Swasta"@if($instansi->kategori_instansi == 'Swasta') selected='selected' @endif>Swasta</option>
+                   <select class="js-select2 form-control" id="kategori_instansi" name="kategori_instansi" value="{{old('kategori_instansi')}}" style="width: 100%;" data-placeholder="Pilihan --">
+                        <option></option>
+                        <option value="Kesehatan">KESEHATAN</option>
+                        <option value="Pemerintahan">PEMERINTAHAN</option>
+                        <option value="BUMN">BUMN</option>
+                        <option value="BUMD">BUMD</option>
+                        <option value="Swasta">SWASTA</option>
                     </select>
                 </div>
                 </div>
@@ -173,51 +167,53 @@
             <br>
             <div class="form-group row">
                 <div class="col-6 form-group">
-                <div class="form-material">
+                <div class="form-material form-material-primary">
                     <label for="visi_misi_instansi" @error('visi_misi_instansi')
                     class="text-danger"
                     @enderror>Visi/ Misi Instansi @error('visi_misi_instansi')
                         | {{$message}}
                     @enderror <span class="text-danger">*</label>
-                    <input id="visi_misi_instansi" type="hidden" class="form-control" id="visi_misi_instansi" name="visi_misi_instansi" value="{{old('visi_misi_instansi', $instansi->visi_misi_instansi)}}" rows="5" placeholder="....">
-                    <trix-editor input="visi_misi_instansi" class="form-control" ></trix-editor>
+                    <input id="visi_misi_instansi" type="hidden" class="form-control" id="visi_misi_instansi" name="visi_misi_instansi" value="{{old('visi_misi_instansi')}}" rows="5" placeholder="....">
+                    {{-- <trix-editor input="visi_misi_instansi" class="form-control" ></trix-editor> --}}
+                    <trix-editor input="visi_misi_instansi"></trix-editor>
                 </div>
                 </div>
                 <div class="col-6 form-group">
-                <div class="form-material">
+                <div class="form-material form-material-primary">
                     <label for="daftar_layanan_instansi" @error('daftar_layanan_instansi')
                     class="text-danger"
                     @enderror>Daftar Layanan @error('daftar_layanan_instansi')
                         | {{$message}}
                     @enderror</label>
-                    <input type="hidden" class="form-control" id="daftar_layanan_instansi" name="daftar_layanan_instansi" value="{{old('daftar_layanan_instansi', $instansi->daftar_layanan_instansi)}}" rows="3" placeholder="......"></input>
-                    <trix-editor input="daftar_layanan_instansi" class="form-control" ></trix-editor>
+                    <input type="hidden" class="form-control" id="daftar_layanan_instansi" name="daftar_layanan_instansi" value="{{old('daftar_layanan_instansi')}}" rows="3" placeholder="......"></input>
+                    <trix-editor input="daftar_layanan_instansi"></trix-editor>
+
                 </div>
                 </div>
             </div>
             <br>
             <div class="form-group row">
                 <div class="col-6 form-group">
-                <div class="form-material">
+                <div class="form-material form-material-primary">
                     <label for="persyaratan_layanan_instansi" @error('persyaratan_layanan_instansi')
                     class="text-danger"
                     @enderror>Persyaratan @error('persyaratan_layanan_instansi')
                         | {{$message}}
                     @enderror</label>
-                    <input type="hidden" class="form-control" id="persyaratan_layanan_instansi" name="persyaratan_layanan_instansi" rows="3" value="{{old('persyaratan_layanan_instansi', $instansi->persyaratan_layanan_instansi)}}" placeholder="......"></input>
-                    <trix-editor input="persyaratan_layanan_instansi" class="form-control" ></trix-editor>
+                    <input type="hidden" class="form-control" id="persyaratan_layanan_instansi" name="persyaratan_layanan_instansi" rows="3" value="{{old('persyaratan_layanan_instansi')}}" placeholder="......"></input>
+                    <trix-editor input="persyaratan_layanan_instansi"></trix-editor>
                 </div>
                 </div>
+
                 <div class="col-6 form-group">
-                <div class="form-material">
+                <div class="form-material form-material-primary">
                     <label for="dasar_hukum_instansi" @error('dasar_hukum_instansi')
                     class="text-danger"
                     @enderror>Dasar Hukum @error('dasar_hukum_instansi')
                         | {{$message}}
                     @enderror</label>
-                    <input type="hidden" class="form-control" id="dasar_hukum_instansi" name="dasar_hukum_instansi" value="{{old('dasar_hukum_instansi', $instansi->dasar_hukum_instansi)}}" rows="3" placeholder="......"></input>
-                    <trix-editor input="dasar_hukum_instansi" class="form-control" ></trix-editor>
-
+                    <input type="hidden" class="form-control" id="dasar_hukum_instansi" name="dasar_hukum_instansi" value="{{old('dasar_hukum_instansi')}}" rows="3" placeholder="......"></input>
+                    <trix-editor input="dasar_hukum_instansi"></trix-editor>
                 </div>
                 </div>
             </div>
@@ -230,9 +226,9 @@
                 </div>
                 <div class="col-6">
                 <div class="form-group row">
-                    <div class="col-lg-9 ml-auto">
+                    <div class="col-lg-9">
                     <button type="submit" class="btn btn-alt-primary">Create</button>
-                    <a href="{{route('instansi.index')}}" class="btn btn-alt-danger">Back</a>
+                    <a href="{{route('instansi.index')}}" class="btn btn-alt-danger" class="d-inline">Back</a>
                     </div>
                 </div>
                 </div>

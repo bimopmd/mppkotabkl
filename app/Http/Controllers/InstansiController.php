@@ -22,7 +22,7 @@ class InstansiController extends Controller
         //
         $instansi = Instansi::all();
         // $instansi = Instansi::with('')->get();
-        return view('instansi.instansiView', compact('instansi'));
+        return view('instansi.index', compact('instansi'));
     }
 
     /**
@@ -33,7 +33,7 @@ class InstansiController extends Controller
     public function create()
     {
         $pegawai = Pegawai::all();
-        return view('instansi.instansiCreateView', compact('pegawai'));
+        return view('instansi.create', compact('pegawai'));
         // return view('instansi.instansiCreateView');
     }
 
@@ -83,7 +83,7 @@ class InstansiController extends Controller
      */
     public function show(Instansi $instansi)
     {
-    return view ('instansi.instansiDetailView', ['instansi' => $instansi]);
+    return view ('instansi.detail', ['instansi' => $instansi]);
     }
 
     /**
@@ -94,7 +94,8 @@ class InstansiController extends Controller
      */
     public function edit(Instansi $instansi)
     {
-        return view('instansi.instansiEditView', compact('instansi'));
+        $pegawai = Pegawai::all();
+        return view('instansi.edit', compact('instansi', 'pegawai'));
     }
 
     /**
@@ -162,6 +163,6 @@ class InstansiController extends Controller
     public function indexInstansi(Instansi $instansi)
     {
         $instansi = Instansi::get();
-        return view('instansi.instansiView', ['instansi' => $instansi]);
+        return view('instansi.index', ['instansi' => $instansi]);
     }
 }

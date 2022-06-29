@@ -1,4 +1,4 @@
-@extends('layouts.masterView')
+@extends('layouts.master')
 @section('title','Detail Data Pegawai')
 @section('content')
      <!-- Main Container -->

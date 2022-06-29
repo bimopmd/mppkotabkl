@@ -13,7 +13,7 @@ class RegisterController extends Controller
     //
     public function index()
     {
-        return view('authenticate.registerView');
+        return view('authenticate.register');
     }
 
     public function store(Request $request)

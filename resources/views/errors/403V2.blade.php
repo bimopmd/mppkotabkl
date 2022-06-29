@@ -70,10 +70,14 @@ svg {
               <use xlink:href="#tornillo" y="60"></use>
             </g>
           </svg>
-<h1>You are not allowed to enter here</h1>
-<h2>Go <a href="{{'/dashboard'}}">Home!</a></h2>
-</body>
-<script>
+    <h1>You are not allowed to enter here</h1>
+    {{-- <h2>Go <a href="/logout">Home!</a></h2> --}}
+    <form action="/logout" method="POST">
+    @csrf
+        <button href="submit">Home!</button>
+    </form>
+    </body>
+    <script>
     var root = document.documentElement;
     var eyef = document.getElementById('eyef');
     var cx = document.getElementById("eyef").getAttribute("cx");

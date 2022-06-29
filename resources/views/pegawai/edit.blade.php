@@ -1,5 +1,5 @@
 
-@extends('layouts.masterView')
+@extends('layouts.master')
 @section('title','Edit Data Pegawai')
 @section('content')
 
@@ -117,7 +117,7 @@
                 </div>
                 <div class="col-6">
                 <div class="form-group row">
-                    <div class="col-lg-9 ml-auto">
+                    <div class="col-lg-9">
                     <button type="submit" class="btn btn-alt-primary">Create</button>
                     <a href="{{route('instansi.index')}}" class="btn btn-alt-danger">Back</a>
                     </div>

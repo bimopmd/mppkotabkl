@@ -15,7 +15,8 @@ class CreateInstansisTable extends Migration
     {
         Schema::create('instansis', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pegawai_id')->constrained('pegawais')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('pegawai_id');
+            // $table->foreignId('pegawai_id')->constrained('pegawais')->onDelete('cascade')->onUpdate('cascade');
             // $table->bigInteger('daftarinstansi_id')->unsigned();
             $table->text('alamat_instansi');
             $table->string('web_instansi')->nullable();

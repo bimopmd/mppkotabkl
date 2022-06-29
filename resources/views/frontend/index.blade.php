@@ -114,7 +114,7 @@
 
 
     <!-- Navbar Start -->
-    @include('layoutsFE.headerFEView')
+    @include('frontend.header')
     <!-- Navbar End -->
 
 
@@ -282,7 +282,7 @@
         }
     </style>
     <!-- About Start -->
-    @include('layoutsFE.aboutFEView')
+    @include('frontend.about')
         <br>
         <br>
         <br>
@@ -292,7 +292,7 @@
     <!-- About End -->
 
     <!-- Fasilitas Start -->
-    @include('layoutsFE.fasilitasFEView')
+    @include('frontend.facility')
     <br>
     <br>
     <br>

@@ -1,4 +1,4 @@
-@extends('layouts.masterView')
+@extends('layouts.master')
 @section('title','MPP')
 @push('css-custom')
 <style>
@@ -77,8 +77,8 @@
                     </div>
                   </div>
                   <div class="py-20 text-center">
-                    <div class="font-size-h2 font-w700 mb-0 text-white" data-toggle="countTo" data-to="35">0</div>
-                    <div class="font-size-sm font-w600 text-uppercase text-white-op">Orders</div>
+                    <div class="font-size-h2 font-w700 mb-0 text-white" data-toggle="countTo" data-to="{{$jumlah_instansi}}">{{$jumlah_instansi}}</div>
+                    <div class="font-size-sm font-w600 text-uppercase text-white-op">Instansi</div>
                   </div>
                 </div>
               </a>
